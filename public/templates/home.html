@@ -1,0 +1,535 @@
+{% extends "layouts/app.html" %}
+{% block body %}
+
+<!-- Hero cover -->
+<section>
+  <div id="cover" class="container-fluid">
+    <div id="carouselHero" class="carousel slide container-fluid" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#carouselHero" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="First slide"></li>
+        <li data-bs-target="#carouselHero" data-bs-slide-to="1" aria-label="Second slide"></li>
+        <li data-bs-target="#carouselHero" data-bs-slide-to="2" aria-label="Third slide"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="row g-2 justify-content-arround">
+            <div class="col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <img src="public/asset/img/hero.png" alt="" class="mx-auto d-block img-fluid hero-img">
+              </div>
+            </div>
+
+            <div class="carousel-content col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <h1 class="highlight">Best Sneakers</h1>
+                <h1>For the GOAT</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et corrupti veniam repudiandae est
+                  dolorem, harum sequi non totam tempore facilis iusto rerum assumenda minus.</p>
+                <button type="button" class="btn btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row g-2 justify-content-arround">
+            <div class="col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <img src="public/asset/img/hero2.png" alt="" class="mx-auto d-block img-fluid hero-img">
+              </div>
+            </div>
+
+            <div class="carousel-content col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <h1 class="highlight">Best Sneakers</h1>
+                <h1>For the GOAT</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et corrupti veniam repudiandae est
+                  dolorem, harum sequi non totam tempore facilis iusto rerum assumenda minus.</p>
+                <button type="button" class="btn btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="row g-2 justify-content-arround">
+            <div class="col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <img src="public/asset/img/hero3.png" alt="" class="mx-auto d-block img-fluid hero-img">
+              </div>
+            </div>
+
+            <div class="carousel-content col-md-6 d-flex justify-content-center align-items-center order-lg-2">
+              <div class="p-3">
+                <h1 class="highlight">Best Sneakers</h1>
+                <h1>For the GOAT</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et corrupti veniam repudiandae est
+                  dolorem, harum sequi non totam tempore facilis iusto rerum assumenda minus.
+                </p>
+                <button type="button" class="btn btn-outline-primary buy-btn">
+                  <i class="fa-regular fa-basket-shopping"></i> Buy now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+        <span class="prev-icon" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+        <span class="next-icon" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Product -->
+
+<section id="product" class="mt-5">
+  <div class="container casual-shoes product-sub-section mt-5">
+    <div class="text-center">
+      <h3 class="custom-hightlight">Casual </h3>
+      <h3 class="highlight">shoes</h3>
+      <a href="#">
+        <h5 class="float-end custom-hightlight">More >></h5>
+      </a>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-cols-sm-1 row-cols-md-3 mt-5 g-4">
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container casual-shoes product-sub-section mt-5">
+    <div class="text-center">
+      <h3 class="custom-hightlight">Casual </h3>
+      <h3 class="highlight">shoes</h3>
+      <a href="#">
+        <h5 class="float-end custom-hightlight">More >></h5>
+      </a>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-cols-sm-1 row-cols-md-3 mt-5 g-4">
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container casual-shoes product-sub-section mt-5">
+    <div class="text-center">
+      <h3 class="custom-hightlight">Casual </h3>
+      <h3 class="highlight">shoes</h3>
+      <a href="#">
+        <h5 class="float-end custom-hightlight">More >></h5>
+      </a>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-cols-sm-1 row-cols-md-3 mt-5 g-4">
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow product-card">
+            <div class="d-flex icons flex-column icons position-absolute p-3">
+              <a><i class="fas fa-heart"></i></a>
+              <a><i class="fas fa-share"></i></a>
+              <a><i class="fas fa-eye"></i></a>
+            </div>
+            <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 product-card-bg">
+            <div class="card-body">
+              <div class="card-title">Nike Shoes</div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                adipisci hic maiores.</p>
+            </div>
+            <div class="card-footer product-card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <h4>$174</h4>
+              </div>
+              <div>
+                <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                    class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container product-sub-section mt-5" id="featured-product">
+    <div class="text-center">
+      <h3 class="custom-hightlight">Featured </h3>
+      <h3 class="highlight">products</h3>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-cols-1 mt-5 g-5">
+
+        <div class="col pb-4">
+          <div class="card h-100 shadow product-card featured-card">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-3 featured-card-bg-small">
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                  </div>
+                  <div class="col-md-9 d-flex align-items-center">
+                    <img src="public/asset/img/shoe1.jpeg" alt="" class="card-img-top w-100 featured-card-bg">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 d-flex flex-column justify-content-center">
+                <div class="card-body featured-card-body">
+                  <h5 class="card-title custom-hightlight">Nike Shoes</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                    adipisci hic maiores.</p>
+                </div>
+                <div
+                  class="card-footer product-card-footer featured-card-footer d-flex align-items-center justify-content-between">
+                  <div>
+                    <h4>$174</h4>
+                  </div>
+                  <div>
+                    <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                        class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col pb-4">
+          <div class="card h-100 shadow product-card featured-card">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-3 featured-card-bg-small">
+                    <div class="small-img"><img src="public/asset/img/shoe2.png" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe1.jpeg" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe2.png" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe2.png" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe2.png" alt="" class="w-100"></div>
+                    <div class="small-img"><img src="public/asset/img/shoe2.png" alt="" class="w-100"></div>
+                  </div>
+                  <div class="col-md-9 d-flex align-items-center">
+                    <img src="public/asset/img/shoe2.png" alt="" class="card-img-top w-100 featured-card-bg">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 d-flex flex-column justify-content-center">
+                <div class="card-body featured-card-body">
+                  <h5 class="card-title custom-hightlight">Nike Shoes</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi magnam maxime quae
+                    adipisci hic maiores.</p>
+                </div>
+                <div
+                  class="card-footer product-card-footer featured-card-footer d-flex align-items-center justify-content-between">
+                  <div>
+                    <h4>$174</h4>
+                  </div>
+                  <div>
+                    <button type="button" class="btn rounded-3 btn-outline-primary buy-btn"><i
+                        class="fa-regular fa-basket-shopping"></i> Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+{% endblock %}

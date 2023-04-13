@@ -1,0 +1,130 @@
+{% extends "layouts/base.html" %}
+
+
+{% block base %}
+<!-- Header -->
+<header id="header">
+  <!-- navbar -->
+  <navbar class="navbar navbar-expand-lg navbar-light fixed-top shadow custom-navbar">
+    <div class="container container-fluid">
+
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand float-end">
+          <img src="public/asset/img/logo.png" alt="Logo" class="img-responsive custom-logo">
+          <span class="custom-hightlight">YAStore</span>
+        </a>
+      </div>
+
+      <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navBarContent, #navbarUser" aria-controls="navBarContent, navbarUser" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBarContent">
+        <ul class="nav navbar-nav ms-auto custom-ul align-items-center justify-content-center">
+          <li class="nav-item custom-li">
+            <a href="/index.php?page=home" {% if home %}aria-current="page" {% endif %}
+              class="nav-link {% if home %} active {% endif %}">Home</a>
+          </li>
+          <li class="nav-item custom-li">
+            <a href="#services" {% if services %}aria-current="page" {% endif %}
+              class="nav-link {% if services %} active {% endif %}">Services</a>
+          </li>
+          <li class="nav-item custom-li">
+            <a href="#product" {% if product %}aria-current="page" {% endif %}
+              class="nav-link {% if product %} active {% endif %}">Products</a>
+          </li>
+          <li class="nav-item custom-li">
+            <a href="#contact" {% if contact %}aria-current="page" {% endif %}
+              class="nav-link {% if contact %} active {% endif %}">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarUser">
+        <ul class="nav navbar-nav ms-auto custom-ul align-items-center justify-content-center">
+          <li class="nav-item custom-li btn">
+            <a href="#" {% if contact %}aria-current="page" {% endif %}
+              class="nav-link {% if cart %} active {% endif %}">
+              <i class="fa-sharp fa-regular fa-cart-shopping"></i>
+              <span class="cart-item-amount highlight">0</span>
+            </a>
+          </li>
+          {% if not user %}
+          <li class="nav-item custom-li btn">
+            <a href="/index.php?page=login" {% if register %}aria-current="page" {% endif %}
+              class="nav-link user {% if login %} active {% endif %}">
+              Join us
+            </a>
+          </li>
+
+          {% else %}
+          <li class="nav-item dropdown">
+            <span class="nav-link user dropdown-toggle" id="navbarLightDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="fa-stack">
+                <i class="fa fa-regular fa-circle fa-stack-2x"></i>
+                <i class="fa fa-solid fa-user fa-stack"></i>
+              </span>
+            </span>
+            <ul class="text-start dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fa-regular fa-address-card"></i> Profle</a></li>
+              <li><a class="dropdown-item" href="index.php?page=logout"><i
+                    class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </navbar>
+</header>
+
+
+
+{% block body %}{% endblock %}
+
+
+
+<footer id="footer" class="bg-black text-center text-lg-start mt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="" class="major">Find a store</a>
+          </li>
+          <li>
+            <a href="" class="major">Become a member</a>
+          </li>
+          <li>
+            <a href="" class="major">Send us feedback</a>
+          </li>
+          <li>
+            <a href="" class="major">Guides and services</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="" class="major">Find a store</a>
+          </li>
+          <li>
+            <a href="" class="minor">Become a member</a>
+          </li>
+          <li>
+            <a href="" class="minor">Send us feedback</a>
+          </li>
+          <li>
+            <a href="" class="minor">Guides and services</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    
+  </div>
+</footer>
+{% endblock %}
