@@ -9,7 +9,6 @@ class Task
     public $task_name= '';
     public $assigner_id;
     public $assignee_id;
-    public $created = '';
     public $deadline = '';
     public $task_description = '';
     public $task_performed = '';
@@ -23,7 +22,6 @@ class Task
         $this->task_description = isset($params['task_description']) ? $params['task_description'] : '';
         $this->assigner_id = isset($params['assigner_id']) ? $params['assigner_id'] : 0;
         $this->assignee_id = isset($params['assignee_id']) ? $params['assignee_id'] : 0;
-        $this->created = isset($params['created']) ? $params['created'] : '';
         $this->deadline = isset($params['deadline']) ? $params['deadline'] : '';
         $this->task_performed = isset($params['task_performed']) ? $params['task_performed'] : '';
         $this->task_result = isset($params['task_result']) ? $params['task_result'] : '';
@@ -50,7 +48,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where assigner_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -65,7 +63,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where assignee_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -80,7 +78,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where deadline=?";
         $data = [$deadline];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -98,7 +96,7 @@ class Task
     function update() {
         $con = Database::getInstance();
         $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description,  $this->task_performed, $this->task_result, $this->task_id];
-        $con->queryUpdate("update tasks set task_name=?, assignee_id=?, assigner_id=?, deadline=?, task_description=?, task_performed=?, task_result=? where permission_id=?", $data);
+        $con->queryUpdate("update tasks set task_name=?, assignee_id=?, assigner_id=?, deadline=?, task_description=?, task_performed=?, task_result=? where task_id=?", $data);
     }
 
     function delete($id = 0) {

@@ -41,7 +41,7 @@ class Message
         $con = Database::newConnection();
         $sql = "select * from message where sender_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -56,7 +56,7 @@ class Message
         $con = Database::newConnection();
         $sql = "select * from message where receiver_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {

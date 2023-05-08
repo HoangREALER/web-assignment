@@ -12,10 +12,7 @@ class User
     public $email;
     public $first_name = '';
     public $last_name = '';
-    public $birth_day = '';
-    public $gender = 1;
     public $phone = '';
-    public $money = '';
 
     function __construct($params = array())
     {
@@ -25,10 +22,7 @@ class User
         $this->email = isset($params['email']) ? $params['email'] : '';
         $this->first_name = isset($params['first_name']) ? $params['first_name'] : '';
         $this->last_name = isset($params['last_name']) ? $params['last_name'] : '';
-        $this->birth_day = isset($params['birth_day']) ? $params['birth_day'] : '';
-        $this->gender = isset($params['gender']) ? $params['gender'] : '';
         $this->phone = isset($params['phone']) ? $params['phone'] : '';
-        $this->money = isset($params['money']) ? $params['money'] : '';
     }
 
     static function findById($id = 0)
@@ -76,8 +70,8 @@ class User
     function save()
     {
         $con = Database::getInstance();
-        $data = [$this->first_name, $this->last_name, $this->birth_day, $this->gender === "male" ? 1 : 0, $this->email, $this->phone, $this->username, md5($this->password), $this->money];
-        $con->queryUpdate("INSERT INTO users (firstname, lastname, dob, gender, email, phone, username, password, money) values(?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?)", $data);
+        $data = [$this->first_name, $this->last_name, $this->email, $this->phone, $this->username, md5($this->password)];
+        $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password) values(?, ?, ?, ?, ?, ?)", $data);
     }
 
     // function update()
@@ -91,15 +85,6 @@ class User
     {
         if (!preg_match("/^[a-zA-Z0-9]+$/", $this->username)) {
             return "username only contains a-zA-Z0-9";
-        }
-        if (empty($this->birth_day)) {
-            return "Birthday empty";
-        }
-        if (!preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/[1-2][0-9]{3}$/", $this->birth_day)) {
-            return "Your birthday must follow format DD/MM/YYYY, and you don't live 100 years ago or after!";
-        }
-        if ($this->gender !== "male" & $this->gender !== "female") {
-            return "Don't want to discriminate but please decide your gender, only two are allowed !";
         }
         if (empty($this->email) && empty($this->phone)) {
             return "Email and phone empty!";
