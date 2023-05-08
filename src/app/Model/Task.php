@@ -12,6 +12,8 @@ class Task
     public $created = '';
     public $deadline = '';
     public $task_description = '';
+    public $task_performed = '';
+    public $task_result = '';
 
     
     function __construct($params = array())
@@ -23,6 +25,8 @@ class Task
         $this->assignee_id = isset($params['assignee_id']) ? $params['assignee_id'] : 0;
         $this->created = isset($params['created']) ? $params['created'] : '';
         $this->deadline = isset($params['deadline']) ? $params['deadline'] : '';
+        $this->task_performed = isset($params['task_performed']) ? $params['task_performed'] : '';
+        $this->task_result = isset($params['task_result']) ? $params['task_result'] : '';
     }
 
     static function findById($id = 0)
@@ -87,14 +91,14 @@ class Task
 
     function save() {
         $con = Database::getInstance();
-        $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description];
-        $con->queryUpdate("INSERT INTO tasks (task_name, assignee_id, assigner_id, deadline, task_description) values(?, ?, ?, ?, ?)", $data);
+        $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description, $this->task_performed, $this->task_result];
+        $con->queryUpdate("INSERT INTO tasks (task_name, assignee_id, assigner_id, deadline, task_description, task_performed, task_result) values(?, ?, ?, ?, ?, ?, ?)", $data);
     }
 
     function update() {
         $con = Database::getInstance();
-        $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description, $this->task_id];
-        $con->queryUpdate("update tasks set task_name=?, assignee_id=?, assigner_id=?, deadline=?, task_description=? where permission_id=?", $data);
+        $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description,  $this->task_performed, $this->task_result, $this->task_id];
+        $con->queryUpdate("update tasks set task_name=?, assignee_id=?, assigner_id=?, deadline=?, task_description=?, task_performed=?, task_result=? where permission_id=?", $data);
     }
 
     function delete($id = 0) {

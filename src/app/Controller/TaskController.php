@@ -5,8 +5,13 @@ namespace App\Controller;
 use App\Model\User;
 
 
-class ProductsController extends Controller
+class TaskController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->authentication();
+    }
     function get()
     {
         $user = $this->auth();
@@ -14,7 +19,8 @@ class ProductsController extends Controller
             header('location: index.php?page=home');
             die();
         }
-        return $this->view('product');
+        $this->data['login'] = ' ';
+        return $this->view('login');
     }
 
     function post()
