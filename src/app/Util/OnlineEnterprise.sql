@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS permisson;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS tasks;
+
+
+
+CREATE TABLE if NOT EXISTS users (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    role_id INT(10) NOT NULL,
+    dob DATE NOT NULL,
+    gender TINYINT(1) NOT NULL, -- 1 for male, 0 for female
+    email VARCHAR(50),
+    phone VARCHAR(15),
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+CREATE TABLE IF NOT EXISTS roles (
+    role_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(30) NOT NULL,
+    role_des VARCHAR(30) NOT NULL
+)
+
+CREATE TABLE IF NOT EXISTS permission (
+    permission_id INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    role_id INT(10) NOT NULL,
+    allowed_function VARCHAR(30) NOT NULL -- Need?
+)
+
+CREATE TABLE IF NOT EXISTS messages (
+    message_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT(10) NOT NULL,
+    receiver_id INT(10) NOT NULL,
+    message TEXT,
+)
+
+CREATE TABLE IF NOT EXISTS tasks (
+    task_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    task_name VARCHAR(30) NOT NULL,
+    task_description TEXT NOT NULL,
+    assigner_id INT(10) NOT NULL,
+    assignee_id INT(10) NOT NULL,
+    created TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deadline TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+)
