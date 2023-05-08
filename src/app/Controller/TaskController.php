@@ -14,29 +14,14 @@ class TaskController extends Controller
     }
     function get()
     {
-        $user = $this->auth();
-        if (isset($user)) {
-            header('location: index.php?page=home');
-            die();
-        }
-        $this->data['login'] = ' ';
-        return $this->view('login');
+        //TODO: For the employee, get all the tasks that assigned to this user.
+        //      For da boss, get all the tasks that this boss have already assigned, including finished and unfinished ones.
     }
 
     function post()
     {
-        $username = isset($_POST['username']) ? $_POST['username'] : '';
-        $password = isset($_POST['password']) ? $_POST['password'] : '';
-
-        $user = User::auth($username, $password);
-        if (isset($user)) {
-            $this->auth($user);
-            echo json_encode(array('success' => true));
-            return true;
-        }
-        // $this->data['error'] = "Lmao";
-        echo json_encode(array('success' => false, 'error' => "Username or password incorrect"));
-        return false;
+        //TODO: For the employee, an employee can choose to finish and report.
+        //      For da boss, get all the tasks that this boss have already assigned, including finished and unfinished ones.
     }
 
     function logout()
