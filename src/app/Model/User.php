@@ -51,6 +51,7 @@ class User
         $sql = "select * from users where username = ?";
         $data = [$username];
         $user = $con->fetchOne($sql, $data);
+        $con->close();
         if (isset($user)) {
             $user['gender'] = $user['gender'] === 1 ? "male" : "female";
             $_user = new User($user);
