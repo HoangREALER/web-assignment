@@ -15,12 +15,12 @@ class MessageController extends Controller
         parent::__construct();
         $this->authentication();
     }
-    function get()
+    function get() // GET
     {
         // TODO: Get all the message that being sent to the user
     }
 
-    function post()
+    function post() // POST
     {
         // TODO: Send message
     }

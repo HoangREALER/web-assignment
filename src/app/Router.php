@@ -20,6 +20,11 @@ class Router
         // Register
         Route::get('register', 'RegisterController@get');
         Route::post('register', 'RegisterController@post');
+        // Task
+        Route::get('task', 'TaskController@get');
+        Route::post('review', 'TaskController@reviewTask');
+        Route::post('assign', 'TaskController@assignTask');
+        Route::post('submit', 'TaskController@submit');
     }
 }
 ?>

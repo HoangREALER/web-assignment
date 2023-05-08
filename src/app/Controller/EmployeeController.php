@@ -15,15 +15,15 @@ class EmployeeController extends Controller
         parent::__construct();
         $this->authentication();
     }
-    function get()
+    function get() // GET
     {
         // TODO: get Employee info, tasks and use template to display it. Reference HomeController@get
     }
 
-    function post()
+    function post() // POST
     {
         // TODO: receive post data to change employee info
     }
 
-    //TODO: Add more function if you want
+    //TODO: Add more functions if you want
 }
