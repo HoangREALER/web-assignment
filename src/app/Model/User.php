@@ -16,6 +16,7 @@ class User
     public $gender = 1;
     public $phone = '';
     public $money = '';
+    public $role_id;
 
     function __construct($params = array())
     {
@@ -29,6 +30,7 @@ class User
         $this->gender = isset($params['gender']) ? $params['gender'] : '';
         $this->phone = isset($params['phone']) ? $params['phone'] : '';
         $this->money = isset($params['money']) ? $params['money'] : '';
+        $this->role_id = isset($params['role_id']) ? $params['money'] : 0;
     }
 
     static function findById($id = 0)
@@ -76,7 +78,7 @@ class User
     function save()
     {
         $con = Database::getInstance();
-        $data = [$this->first_name, $this->last_name, $this->birth_day, $this->gender === "male" ? 1 : 0, $this->email, $this->phone, $this->username, md5($this->password), $this->money];
+        $data = [$this->first_name, $this->last_name, $this->birth_day, $this->gender === "male" ? 1 : 0, $this->email, $this->phone, $this->username, md5($this->password), $this->money, $this->role_id];
         $con->queryUpdate("INSERT INTO users (firstname, lastname, dob, gender, email, phone, username, password, money) values(?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?)", $data);
     }
 

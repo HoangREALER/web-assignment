@@ -50,7 +50,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where assigner_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -65,7 +65,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where assignee_id=?";
         $data = [$id];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
@@ -80,7 +80,7 @@ class Task
         $con = Database::newConnection();
         $sql = "select * from tasks where deadline=?";
         $data = [$deadline];
-        $ress = $con->fetchOne($sql, $data);
+        $ress = $con->fetchAll($sql, $data);
         $con->close();
         foreach($ress as $res)
         {
