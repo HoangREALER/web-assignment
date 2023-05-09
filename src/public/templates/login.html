@@ -30,16 +30,16 @@
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <h2 style="text-align:center;">Sign In</h2>
             <p style="text-align:center">Sign in to stay connected</p>
-            <form>
+            <form method="post" action="index.php?page=login">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                <input type="email" id="form1Example13" class="form-control form-control-lg" />
-                <label class="form-label" for="form1Example13">Email address</label>
+                <input type="text" name="username" id="form1Example13" class="form-control form-control-lg" />
+                <label class="form-label" for="form1Example13">Username</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                <input type="password" id="form1Example23" class="form-control form-control-lg" />
+                <input type="password" name="password" id="form1Example23" class="form-control form-control-lg" />
                 <label class="form-label" for="form1Example23">Password</label>
                 </div>
 
@@ -73,7 +73,7 @@
                     <i class="fab fa-linkedin me-2"></i></a>
                 </div>
                 <br>
-                <p style="text-align: center;">Don't have account? <a href="#" style="text-decoration: underline;">Click here to sign up</a>.</p>
+                <p style="text-align: center;">Don't have account? <a href="index.php?page=register" style="text-decoration: underline;">Click here to sign up</a>.</p>
             </form>
         </div>
         <div class="col-md-8 col-lg-7 col-xl-6">

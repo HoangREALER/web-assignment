@@ -10,12 +10,9 @@ class User
     public $username;
     public $password;
     public $email;
-    public $first_name = '';
-    public $last_name = '';
-    public $birth_day = '';
-    public $gender = 1;
+    public $firstname = '';
+    public $lastname = '';
     public $phone = '';
-    public $money = '';
     public $role_id;
 
     function __construct($params = array())
@@ -24,13 +21,10 @@ class User
         $this->username = isset($params['username']) ? $params['username'] : '';
         $this->password = isset($params['password']) ? $params['password'] : '';
         $this->email = isset($params['email']) ? $params['email'] : '';
-        $this->first_name = isset($params['first_name']) ? $params['first_name'] : '';
-        $this->last_name = isset($params['last_name']) ? $params['last_name'] : '';
-        $this->birth_day = isset($params['birth_day']) ? $params['birth_day'] : '';
-        $this->gender = isset($params['gender']) ? $params['gender'] : '';
+        $this->firstname = isset($params['firstname']) ? $params['firstname'] : '';
+        $this->lastname = isset($params['lastname']) ? $params['lastname'] : '';
         $this->phone = isset($params['phone']) ? $params['phone'] : '';
-        $this->money = isset($params['money']) ? $params['money'] : '';
-        $this->role_id = isset($params['role_id']) ? $params['money'] : 0;
+        $this->role_id = isset($params['role_id']) ? $params['role_id'] : 0;
     }
 
     static function findById($id = 0)
@@ -55,7 +49,6 @@ class User
         $user = $con->fetchOne($sql, $data);
         $con->close();
         if (isset($user)) {
-            $user['gender'] = $user['gender'] === 1 ? "male" : "female";
             $_user = new User($user);
             return $_user;
         }
@@ -78,30 +71,21 @@ class User
     function save()
     {
         $con = Database::getInstance();
-        $data = [$this->first_name, $this->last_name, $this->birth_day, $this->gender === "male" ? 1 : 0, $this->email, $this->phone, $this->username, md5($this->password), $this->money, $this->role_id];
-        $con->queryUpdate("INSERT INTO users (firstname, lastname, dob, gender, email, phone, username, password, money) values(?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?)", $data);
+        $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id];
+        $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password, role_id) values(?, ?, ?, ?, ?, ?, ?)", $data);
     }
 
-    // function update()
-    // {
-    //     $con = Database::getInstance();
-    //     $data = [$this->password, $this->name, $this->id];
-    //     $con->queryUpdate("update users set password=?, name=? where id=?", $data);
-    // }
+    function update()
+    {
+        $con = Database::getInstance();
+        $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id, $this->id];
+        $con->queryUpdate("update users set firstname=?, lastname=?, email=?, phone=?, username=?, password=?, role_id=? where id=?", $data);
+    }
 
     function validate()
     {
         if (!preg_match("/^[a-zA-Z0-9]+$/", $this->username)) {
             return "username only contains a-zA-Z0-9";
-        }
-        if (empty($this->birth_day)) {
-            return "Birthday empty";
-        }
-        if (!preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/[1-2][0-9]{3}$/", $this->birth_day)) {
-            return "Your birthday must follow format DD/MM/YYYY, and you don't live 100 years ago or after!";
-        }
-        if ($this->gender !== "male" & $this->gender !== "female") {
-            return "Don't want to discriminate but please decide your gender, only two are allowed !";
         }
         if (empty($this->email) && empty($this->phone)) {
             return "Email and phone empty!";
@@ -122,7 +106,7 @@ class User
         if (!preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}/', $this->password)) {
             return "Password must have minimum 8 characters, at least one lowercase letter, one uppercase letter, one number. Can have special characters";
         }
-        if (empty($this->first_name) || empty($this->last_name)) {
+        if (empty($this->firstname) || empty($this->lastname)) {
             return "Name empty!";
         }
 
@@ -131,6 +115,6 @@ class User
 
     function __toString()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->firstname . ' ' . $this->lastname;
     }
 }

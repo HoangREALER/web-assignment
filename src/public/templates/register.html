@@ -1,116 +1,32 @@
-{% extends "layouts/app.html" %}
-{% block body %}
-<section class="auth-form">
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                    <div class="row g-0 shadow">
-                        <div class="col-lg-4 d-flex align-items-center gradient-custom-2">
-                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                <h4 class="mb-4 text-white">We are more than just a company</h4>
-                                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                    eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="card-body p-md-5 mx-md-4 ">
-                                <h2 class="mt-1 mb-5 pb-1">Registration form</h2>
-                                <form action="/index.php?page=register">
-                                    <div class="row row-space">
-                                        <p>Tell us your name</p>
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <input type="text" id="first-name" class="form-control" name="first_name" required
-                                                placeholder="First name" />
-                                        </div>
-
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <input type="text" id="last-name" class="form-control" name="last_name" required
-                                                placeholder="Last name" />
-                                        </div>
-                                    </div>
-                                    <div class="row row-space">
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <label class="label mb-3">Birthday</label>
-                                            <div class="input-icons">
-                                                <input id="b-day" class="js-datepicker form-control" type="text" name="birthday" required placeholder="DD/MM/YYYY"/> 
-                                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                            </div>
-                                        </div>
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <label class="label mb-3" id="gender">Gender</label>
-                                            <div class="input-group">
-                                                <div class="pt-3">
-                                                    <label class="radio-container me-5">Male
-                                                        <input type="radio" id="male" checked="checked" value="male" name="gender">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                    <label class="radio-container">Female
-                                                        <input type="radio" id="female" name="gender" value="female">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row row-space">
-                                        <p>Contact</p>
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <input type="email" id="email" class="form-control" name="email" required
-                                                placeholder="Email" />
-                                        </div>
-
-                                        <div class="form-outline mb-4 col-xs-12 col-lg-6">
-                                            <input type="text" id="phone" class="form-control" name="phone"
-                                                placeholder="Phone number" />
-                                        </div>
-                                    </div>
-                                    <div class="row row-space">
-                                        <p>How should we call you ?</p>
-                                        <div class="form-outline mb-4 col-12">
-                                            <input type="text" id="username" class="form-control" name="username" required
-                                                placeholder="Username" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row row-space">
-                                        <p>Password</p>
-                                        <div class="form-outline mb-4 col-12">
-                                            <input type="password" id="password" class="form-control" name="password" required
-                                                placeholder="Enter password" />
-                                        </div>
-
-                                        <div class="form-outline mb-4 col-12">
-                                            <input type="password" id="password_repeat" class="form-control" name="confirm_password" required
-                                                placeholder="Enter your password again" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div id="form-error" class="alert alert-danger hide"></div>
-                                    <div id="form-success" class="alert alert-success hide"></div>
-                                    
-                                    <div class="text-center d-grid gap-2 pt-1 mb-5 pb-1">
-                                        <button class="btn gradient-custom-2 mb-3" type="button" onclick=register()><span
-                                                style="color: #eee">Register now</span></button>
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <p class="mb-0 me-2">Already have an account?</p>
-                                        <button type="button" class="btn btn-outline-primary" onclick=locate_signin()>Sign in</button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="public/assets/css/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Sign Up</h1>
+            <form>
+            
+                <input type="text" id="username" name="username" required placeholder="Username">
+                
+                <input type="email" id="email" name="email" required placeholder="Email address">
+                
+                <input type="password" id="password" name="password" required placeholder="Password">
+                
+                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm Password">
+                
+                <button type="submit">Register</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="index.php?page=login">Click here to login</a></p>
+        </div>
+        <div class="image-container">
+            <img src="https://www.pngmagic.com/product_images/simple-background-texture-blue.jpg?fbclid=IwAR1qlUmiGHtylouC2tXG4FheMNWKjMsuOQwh4RzA2_W3VT8H8ISiyWhGmao" alt="Your Image">
         </div>
     </div>
-</section>
-{% endblock %}
+</body>
+</html>

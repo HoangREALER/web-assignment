@@ -25,6 +25,9 @@ class Router
         Route::post('review', 'TaskController@reviewTask');
         Route::post('assign', 'TaskController@assignTask');
         Route::post('submit', 'TaskController@submit');
+        // Employee
+        Route::get('employee', 'EmployeeController@get');
+        Route::post('employee', 'EmployeeController@post');
     }
 }
 ?>

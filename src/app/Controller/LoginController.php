@@ -27,10 +27,14 @@ class LoginController extends Controller
         if (isset($user)) {
             $this->auth($user);
             echo json_encode(array('success' => true));
+            $a = new HomeController();
+            $a->get();
             return true;
         }
         // $this->data['error'] = "Lmao";
         echo json_encode(array('success' => false, 'error' => "Username or password incorrect"));
+        $a = new LoginController();
+        $a->get();
         return false;
     }
 
