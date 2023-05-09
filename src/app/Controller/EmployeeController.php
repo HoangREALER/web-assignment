@@ -50,7 +50,7 @@ class EmployeeController extends Controller
     function employeeList()
     {
         // return list of employee, data['list']
-        // $employee_list = array();
+        $employee_list = array();
         
         $user = User::findById($this->auth()->id);
         if ($user->role_id === 0)
