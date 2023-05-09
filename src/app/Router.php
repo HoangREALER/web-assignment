@@ -28,6 +28,7 @@ class Router
         // Employee
         Route::get('employee', 'EmployeeController@get');
         Route::post('employee', 'EmployeeController@post');
+        Route::get('employeeList', 'EmployeeController@employeeList');
     }
 }
 ?>
