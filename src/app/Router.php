@@ -26,9 +26,9 @@ class Router
         Route::post('assign', 'TaskController@assignTask');
         Route::post('submit', 'TaskController@submit');
         // Employee
-        Route::get('employee', 'EmployeeController@get');
-        Route::post('employee', 'EmployeeController@post');
-        Route::get('employeeList', 'EmployeeController@employeeList');
+        Route::get('profile', 'EmployeeController@get');
+        Route::post('profile', 'EmployeeController@post');
+        Route::get('employee', 'EmployeeController@employeeList');
     }
 }
 ?>
