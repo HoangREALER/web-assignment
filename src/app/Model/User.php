@@ -47,7 +47,6 @@ class User
         $user = $con->fetchOne($sql, $data);
         $con->close();
         if (isset($user)) {
-            $user['gender'] = $user['gender'] === 1 ? "male" : "female";
             $_user = new User($user);
             return $_user;
         }
