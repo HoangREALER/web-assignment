@@ -13,6 +13,7 @@ class User
     public $first_name = '';
     public $last_name = '';
     public $phone = '';
+    public $role_id;
 
     function __construct($params = array())
     {
@@ -23,6 +24,7 @@ class User
         $this->first_name = isset($params['first_name']) ? $params['first_name'] : '';
         $this->last_name = isset($params['last_name']) ? $params['last_name'] : '';
         $this->phone = isset($params['phone']) ? $params['phone'] : '';
+        $this->role_id = isset($params['role_id']) ? $params['role_id'] : 0;
     }
 
     static function findById($id = 0)
@@ -69,8 +71,8 @@ class User
     function save()
     {
         $con = Database::getInstance();
-        $data = [$this->first_name, $this->last_name, $this->email, $this->phone, $this->username, md5($this->password)];
-        $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password) values(?, ?, ?, ?, ?, ?)", $data);
+        $data = [$this->first_name, $this->last_name, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id];
+        $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password, role_id) values(?, ?, ?, ?, ?, ?, ?)", $data);
     }
 
     // function update()
