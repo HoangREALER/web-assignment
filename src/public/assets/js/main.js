@@ -116,3 +116,89 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
+
+const review = async (action, task_id) => {
+  let data = {"action": action, "task_id": task_id}
+  
+  var formBody = [];
+  for (var property in data) {
+    var encodedKey = encodeURIComponent(property);
+    var encodedValue = encodeURIComponent(data[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+
+  await fetch('/index.php?page=review', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: formBody
+  })
+  .then(res => {
+    if (res.status !== 200)
+      throw new Error("Bad Server Response");
+    else
+      window.location = "index.php?page=task"
+  })
+  .catch(err => console.error(err));
+}
+
+const submit = async (task_id, task_performed) => {
+  let data = {"task_performed": task_performed, "task_id": task_id}
+  
+  var formBody = [];
+  for (var property in data) {
+    var encodedKey = encodeURIComponent(property);
+    var encodedValue = encodeURIComponent(data[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+
+  await fetch('/index.php?page=submit', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: formBody
+  })
+  .then(res => {
+    if (res.status !== 200)
+      throw new Error("Bad Server Response");
+    else
+      window.location = "index.php?page=task"
+  })
+  .catch(err => console.error(err));
+}
+
+const assign = async () => {
+  let data = {
+    "task_name": document.getElementById('task_name').value, 
+    "deadline": document.getElementById('deadline').value,
+    "assignee_name": document.getElementById('assignee_name').value,
+    "task_description": document.getElementById('task_description').value,
+  }
+  
+  var formBody = [];
+  for (var property in data) {
+    var encodedKey = encodeURIComponent(property);
+    var encodedValue = encodeURIComponent(data[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+
+  await fetch('/index.php?page=assign', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: formBody
+  })
+  .then(res => {
+    if (res.status !== 200)
+      throw new Error("Bad Server Response");
+    else
+      window.location = "index.php?page=task"
+  })
+  .catch(err => console.error(err));
+}

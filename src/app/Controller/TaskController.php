@@ -23,6 +23,7 @@ class TaskController extends Controller
         
         if ($this->data['role'] === 0) {
             $arr_tasks = Task::findByAssigner($user->id);
+            $arr_tasks = array_reverse($arr_tasks);
             foreach($arr_tasks as $task)
             {
                 $task->assigner = User::findById($task->assigner_id);
@@ -33,7 +34,23 @@ class TaskController extends Controller
         }
         else { 
             $arr_tasks = Task::findByAssignee($user->id);
-            $this->data['tasks'] = $arr_tasks;
+            $arr_tasks = array_reverse($arr_tasks);
+            $task_undone = array(); $task_done = array();
+            foreach($arr_tasks as $task)
+            {
+                $task->assigner = User::findById($task->assigner_id);
+                $task->assignee = User::findById($task->assignee_id);
+                if ($task->task_result === '' or  $task->task_result === 'Returned')
+                {
+                    $task_undone[] = $task;
+                }
+                else
+                {
+                    $task_done[] = $task;
+                }
+            }
+            $this->data['task_undone'] = $task_undone;
+            $this->data['task_done'] = $task_done;
             $this->view('task');
         }
     }
@@ -41,11 +58,10 @@ class TaskController extends Controller
     function submit() // POST
     {
         //TODO: For the employee, an employee can perform the task, the result will go to task_performed to finish and submit the task.
-        if (isset($_POST['task_performed']) && isset($_POST['task_id']) && gettype($_POST['task_id']) === 'integer') 
+        if (isset($_POST['task_performed']) && isset($_POST['task_id'])) 
         {
             return $this->performTask($_POST['task_id'], $_POST['task_performed']);
         }
-        $this->get();
     }
 
     function performTask($task_id = 0, $performance = '') 
@@ -57,6 +73,10 @@ class TaskController extends Controller
             if ($assignee->id === $task->assignee_id) 
             {
                 $task->task_performed = $performance;
+                if ($task->task_result === "Returned")
+                {
+                    $task->task_result = "";
+                }
                 $task->update();
             }
             else 
@@ -68,28 +88,27 @@ class TaskController extends Controller
         {
             $this->data['error'] = 'Task not found permission';
         }
-        $this->get();
     }
 
     function reviewTask() // POST
     {
         //TODO: For da boss, a boss can choose to approve, reject, return for redoing. -> Ông chia ra 3 cái function khác nhau cx đc.
-        if (isset($_POST['action']) && isset($_POST['task_id']) && gettype($_POST['task_id']) === 'integer') 
+        if (isset($_POST['action']) && isset($_POST['task_id'])) 
         {
             if ($_POST['action'] === "approve")
             {
-                return $this->approveTask($_POST['task_id']);
+                return $this->approveTask(intval($_POST['task_id']));
             } 
             elseif ($_POST['action'] === "reject") 
             {
-                return $this->rejectTask($_POST['task_id']);
+                return $this->rejectTask(intval($_POST['task_id']));
             }
             elseif ($_POST['action'] === "redo") 
             {
-                return $this->returnTask($_POST['task_id']);
+                return $this->returnTask(intval($_POST['task_id']));
             }
         }
-        $this->view('task-for-boss');
+        echo json_encode(array('success'=> false));
     }
 
     function approveTask($id)
@@ -97,16 +116,16 @@ class TaskController extends Controller
         $task = Task::findById($id);
         if(isset($task))
         {
-            if ($this->auth()->id === $task->task_id && $task->task_performed !== '') 
+            if ($this->auth()->id === $task->assigner_id && $task->task_performed !== '') 
             {
-                $task->task_result = "approve";
+                $task->task_result = "Approved";
+                $task->update();
             }
             else 
             {
                 $this->data['error'] = 'You don\'t have permission';
             }
         }
-        $this->get();
     }
 
     function rejectTask($id)
@@ -114,16 +133,16 @@ class TaskController extends Controller
         $task = Task::findById($id);
         if(isset($task))
         {
-            if ($this->auth()->id === $task->task_id && $task->task_performed !== '') 
+            if ($this->auth()->id === $task->assigner_id && $task->task_performed !== '') 
             {
-                $task->task_result = "reject";
+                $task->task_result = "Rejected";
+                $task->update();
             }
             else 
             {
                 $this->data['error'] = 'You don\'t have permission';
             }
         }
-        $this->get();
     }
 
     function returnTask($id)
@@ -131,32 +150,45 @@ class TaskController extends Controller
         $task = Task::findById($id);
         if(isset($task))
         {
-            if ($this->auth()->id === $task->task_id && $task->task_performed !== '') 
+            if ($this->auth()->id === $task->assigner_id && $task->task_performed !== '') 
             {
-                $task->task_result = "redo";
+                $task->task_result = "Returned";
+                $task->update();
             }
             else 
             {
                 $this->data['error'] = 'You don\'t have permission';
             }
         }
-        $this->get();
+    }
+
+    function getFormToAssignTask()
+    {
+        if ($this->auth()->role_id == 0)
+        { 
+            $this->data['assign'] = '';
+            $this->view('assign-task');
+        }
+        else
+        {
+            echo "Nhầm chỗ bạn êi";
+        }
     }
 
     function assignTask() // POST
     {
         //TODO: Create a task with task_name, assinee_id, task_description, deadline.
         $data = array();
-        $data['task_name'] = isset($_POST['task_name']) ? $_POST['task_name'] : 'Task With No Name';
-        $assignee_name = isset($_POST['assignee_name']) ? $_POST['assignee_name'] : '';
+        $data['task_name'] = isset($_POST['task_name']) && $_POST['task_name'] !== "" ? $_POST['task_name'] : 'Task With No Name';
+        $assignee_name = isset($_POST['assignee_name']) && $_POST['assignee_name'] !== "" ? $_POST['assignee_name'] : '';
         $data['task_description'] = isset($_POST['task_description']) ? $_POST['task_description'] : '';
-        $data['deadline']  = isset($_POST['deadline']) ? $_POST['deadline'] : '';
+        $data['deadline']  = isset($_POST['deadline']) ? date("Y-m-d h:m:s", strtotime($_POST['deadline'])) : '';
+        echo $data['deadline'];
         $assignee = User::findByUsername($assignee_name);
         $data['assigner_id'] = $this->auth()->id;
-        $data['assignee_id'] = isset($assignee) ? $assignee->id : 0;
+        $data['assignee_id'] = isset($assignee) ? $assignee->id : 2;
         $task = new Task($data);
         $task->save();
-        $this->get();
     }
     
 }

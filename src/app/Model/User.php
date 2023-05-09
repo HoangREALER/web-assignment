@@ -43,9 +43,10 @@ class User
 
     static function findByUsername($username = '')
     {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $sql = "select * from users where username = ?";
         $data = [$username];
+        echo($username);
         $user = $con->fetchOne($sql, $data);
         $con->close();
         if (isset($user)) {
@@ -57,7 +58,7 @@ class User
 
     static function findByRoleId($role_id) {
         $data = array();
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $sql = "select * from users where role_id=?";
         $data = [$role_id];
         $ress = $con->fetchAll($sql, $data);
@@ -71,10 +72,11 @@ class User
 
     static function auth($username = '', $password = '')
     {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $sql = "select * from users where username = ? and password = ?";
         $data = [$username, md5($password)];
         $user = $con->fetchOne($sql, $data);
+        $con->close();
         if (isset($user)) {
             $_user = new User($user);
             return $_user;
@@ -84,16 +86,18 @@ class User
 
     function save()
     {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id];
         $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password, role_id) values(?, ?, ?, ?, ?, ?, ?)", $data);
+        $con->close();
     }
 
     function update()
     {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id, $this->id];
         $con->queryUpdate("update users set firstname=?, lastname=?, email=?, phone=?, username=?, password=?, role_id=? where id=?", $data);
+        $con->close();
     }
 
     function validate()

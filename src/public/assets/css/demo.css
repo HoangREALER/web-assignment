@@ -119,3 +119,8 @@
   height: 1px;
   background: #eee;
 }
+
+.table>tbody>tr.no-border>td,
+.table>tbody>tr.no-border>th {
+  border: none;
+}

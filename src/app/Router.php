@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Controller\BranchController;
+use App\Controller\TaskController;
 use App\Core\Route;
 class Router
 {
@@ -25,6 +26,7 @@ class Router
         Route::post('review', 'TaskController@reviewTask');
         Route::post('assign', 'TaskController@assignTask');
         Route::post('submit', 'TaskController@submit');
+        Route::get('assign', 'TaskController@getFormToAssignTask');
         // Employee
         Route::get('profile', 'EmployeeController@get');
         Route::post('profile', 'EmployeeController@post');

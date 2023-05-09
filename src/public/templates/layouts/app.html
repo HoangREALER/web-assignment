@@ -95,17 +95,24 @@
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Task &amp; Progress</span></li>
         <!-- Forms -->
-        <li class="menu-item {% if tasks is defined or task_assign is defined %}active{% endif %}">
+        <li class="menu-item {% if tasks is defined or task_undone is defined or assign is defined %}active{% endif %}">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Task</div>
           </a>
           <ul class="menu-sub">
-            <li class="menu-item {% if tasks is defined %}active{% endif %}">
+            <li class="menu-item {% if tasks is defined or task_undone is defined %}active{% endif %}">
               <a href="index.php?page=task" class="menu-link">
                 <div data-i18n="Basic Inputs">List</div>
               </a>
             </li>
+            {% if user.role_id == 0%}
+            <li class="menu-item {% if assign is defined %}active{% endif %}">
+              <a href="index.php?page=assign" class="menu-link">
+                <div data-i18n="Basic Inputs">Assign</div>
+              </a>
+            </li>
+            {% endif %}
           </ul>
         </li>
         <!-- Tables -->

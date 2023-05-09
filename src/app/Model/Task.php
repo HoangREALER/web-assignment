@@ -90,21 +90,32 @@ class Task
     }
 
     function save() {
-        $con = Database::getInstance();
-        $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description, $this->task_performed, $this->task_result];
-        $con->queryUpdate("INSERT INTO tasks (task_name, assignee_id, assigner_id, deadline, task_description, task_performed, task_result) values(?, ?, ?, ?, ?, ?, ?)", $data);
+        $con = Database::newConnection();
+        if ($this->deadline !== '')
+        {
+            $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description, $this->task_performed, $this->task_result];
+            $con->queryUpdate("INSERT INTO tasks (task_name, assignee_id, assigner_id, deadline, task_description, task_performed, task_result) values(?, ?, ?, ?, ?, ?, ?)", $data);
+        }
+        else
+        {
+            $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->task_description, $this->task_performed, $this->task_result];
+            $con->queryUpdate("INSERT INTO tasks (task_name, assignee_id, assigner_id, task_description, task_performed, task_result) values(?, ?, ?, ?, ?, ?)", $data);
+        }
+        $con->close();
     }
 
     function update() {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $data = [$this->task_name, $this->assignee_id, $this->assigner_id, $this->deadline, $this->task_description,  $this->task_performed, $this->task_result, $this->task_id];
         $con->queryUpdate("update tasks set task_name=?, assignee_id=?, assigner_id=?, deadline=?, task_description=?, task_performed=?, task_result=? where task_id=?", $data);
+        $con->close();
     }
 
     function delete($id = 0) {
-        $con = Database::getInstance();
+        $con = Database::newConnection();
         $data = [$id];
         $con->queryUpdate("DELETE FROM tasks where task_id=?", $data);
+        $con->close();
     }
 
     function __toString()

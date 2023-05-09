@@ -1,0 +1,149 @@
+{% extends "layouts/app.html" %}
+{% block body %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Task /</span> List</h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <h5 class="card-header">Finished Tasks</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Assgined to</th>
+                        <th>Assgined by</th>
+                        <th>Status</th>
+                        <th>Submission</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    {% for task in task_done %}
+                    {% set assigner = task.assigner %}
+                    {% set assignee = task.assignee %}
+                    <tr>
+                        <td><strong>{{ task.task_name }}</strong></td>
+                        <td>
+                            <div class="d-inline-block">
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                        class="avatar avatar-xs pull-up" title="John Xina">
+                                        <img src="public/assets/img/avatars/{{ task.assignee_id }}.png" alt="Avatar"
+                                            class="rounded-circle" />
+                                    </li>
+                                </ul>
+                            </div>
+                            {{ assignee.firstname }} {{ assignee.lastname }}
+                        </td>
+                        <td>
+                            <div class="d-inline-block">
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                        class="avatar avatar-xs pull-up" title="Michael Jackson">
+                                        <img src="public/assets/img/avatars/{{ task.assigner_id }}.png" alt="Avatar"
+                                            class="rounded-circle" />
+                                    </li>
+                                </ul>
+                            </div>
+                            {{ assigner.firstname }} {{ assigner.lastname }}
+                        </td>
+                        {% if task.task_performed == '' %}
+                        <td><span class="badge bg-label-dark me-1">In Progress</span></td>
+                        {% elseif task.task_result == '' %}
+                        <td><span class="badge bg-label-warning me-1">Pending</span></td>
+                        {% elseif task.task_result == 'Approved' %}
+                        <td><span class="badge bg-label-success me-1">Approved</span></td>
+                        {% elseif task.task_result == 'Rejected' %}
+                        <td><span class="badge bg-label-danger me-1">Rejected</span></td>
+                        {% elseif task.task_result == 'Returned' %}
+                        <td><span class="badge bg-label-info me-1">Returned</span></td>
+                        {% endif %}
+                        <td class="text-truncate" style="max-width: 300px;">
+                            {{ task.task_performed }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <div class="card">
+        <h5 class="card-header">Finished Tasks</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Assgined to</th>
+                        <th>Assgined by</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    {% for task in task_undone %}
+                    {% set assigner = task.assigner %}
+                    {% set assignee = task.assignee %}
+                    <tr class="no-border">
+                        <td><strong>{{ task.task_name }}</strong></td>
+                        <td>
+                            <div class="d-inline-block">
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                        class="avatar avatar-xs pull-up" title="John Xina">
+                                        <img src="public/assets/img/avatars/{{ task.assignee_id }}.png" alt="Avatar"
+                                            class="rounded-circle" />
+                                    </li>
+                                </ul>
+                            </div>
+                            {{ assignee.firstname }} {{ assignee.lastname }}
+                        </td>
+                        <td>
+                            <div class="d-inline-block">
+                                <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                        class="avatar avatar-xs pull-up" title="Michael Jackson">
+                                        <img src="public/assets/img/avatars/{{ task.assigner_id }}.png" alt="Avatar"
+                                            class="rounded-circle" />
+                                    </li>
+                                </ul>
+                            </div>
+                            {{ assigner.firstname }} {{ assigner.lastname }}
+                        </td>
+                        {% if task.task_performed == '' %}
+                        <td><span class="badge bg-label-dark me-1">In Progress</span></td>
+                        {% elseif task.task_result == '' %}
+                        <td><span class="badge bg-label-warning me-1">Pending</span></td>
+                        {% elseif task.task_result == 'Approved' %}
+                        <td><span class="badge bg-label-success me-1">Approved</span></td>
+                        {% elseif task.task_result == 'Rejected' %}
+                        <td><span class="badge bg-label-danger me-1">Rejected</span></td>
+                        {% elseif task.task_result == 'Returned' %}
+                        <td><span class="badge bg-label-info me-1">Returned</span></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="mb-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Your work goes here</span>
+                                    <textarea class="form-control" id="performance-{{ task.task_id }}" style="height: 130px;" placeholder="Enter text here...">{{ task.task_performed }}</textarea>
+                                </div>
+                                <input type="text" value="{{ task.task_id }}" hidden>
+                                <button class="btn btn-success"
+                                    onclick="submit({{ task.task_id }}, document.getElementById('performance-{{ task.task_id }}').value)">Submit</button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--/ Basic Bootstrap Table -->
+
+{% endblock %}

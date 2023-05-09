@@ -106,7 +106,7 @@ CREATE TABLE `tasks` (
   `task_performed` text,
   `task_result` text,
   PRIMARY KEY (`task_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'Write a song','',1,2,'2023-05-09 14:34:42','2023-05-20 00:00:01','Mamaaa, Just killed a man, Put a gun against his head, pulled my trigger, Now he\'s dead','Approved'),(2,'Calculate 7*7','Easy math',1,3,'2023-05-09 14:39:33','2023-05-18 00:00:01','49',NULL),(3,'Center div',NULL,1,4,'2023-05-09 13:54:25','2023-05-18 00:00:01',NULL,NULL),(4,'Print money',NULL,1,5,'2023-05-09 14:39:33','2023-05-18 00:00:01','Here is your 40k.','Rejected');
+INSERT INTO `tasks` VALUES (1,'Write a song','',1,2,'2023-05-09 16:21:26','2023-05-20 00:00:01','Mamaaa, Just killed a man, Put a gun against his head, pulled my trigger, Now he\'s dead','Rejected'),(2,'Calculate 7*7','Easy math',1,3,'2023-05-09 16:22:55','2023-05-18 00:00:01','49','Returned'),(3,'Center div',NULL,1,4,'2023-05-09 13:54:25','2023-05-18 00:00:01',NULL,NULL),(4,'Print money','',1,5,'2023-05-09 16:21:19','2023-05-18 00:00:01','Here is your 40k.',''),(5,'Sing a song',NULL,1,2,'2023-05-09 17:36:47','2023-05-18 00:00:01','',NULL),(6,'Write hello world in python',NULL,1,2,'2023-05-09 17:38:37','2023-05-18 00:00:01',NULL,NULL),(7,'Go home','',1,2,'2023-05-09 19:35:31','2023-05-18 00:00:01','Peepo fly home, weeeeeeeeeeeeeeeeeeeeeeee.','');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-09 22:34:11
+-- Dump completed on 2023-05-10  3:28:53
