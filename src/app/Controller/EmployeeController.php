@@ -49,10 +49,15 @@ class EmployeeController extends Controller
 
     function employeeList()
     {
+        // return list of employee, data['list']
+        $employee_list = array();
+        
         $user = User::findById($this->auth()->id);
-        if ($user->id === 0)
+        if ($user->role_id === 0)
         {
-            //TODO: return employee list, $this->data['list']
+            $data['list'] = User::findByRoleId(1);
+        } else {
+            echo json_encode(array('success' => false, 'error' => 'You don\'t have permission'));
         }
     }
     //TODO: Add more functions if you want

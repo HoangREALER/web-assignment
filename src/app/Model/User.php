@@ -55,6 +55,20 @@ class User
         return null;
     }
 
+    static function findByRoleId($role_id) {
+        $data = array();
+        $con = Database::getInstance();
+        $sql = "select * from users where role_id=?";
+        $data = [$role_id];
+        $ress = $con->fetchAll($sql, $data);
+        $con->close();
+        foreach($ress as $res)
+        {
+            $_user[] = new User($res);
+        }
+        return $_user;
+    }
+
     static function auth($username = '', $password = '')
     {
         $con = Database::getInstance();
