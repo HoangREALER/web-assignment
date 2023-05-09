@@ -55,10 +55,11 @@ class EmployeeController extends Controller
         $user = User::findById($this->auth()->id);
         if ($user->role_id === 0)
         {
-            $data['list'] = User::findByRoleId(1);
+            $this->data['list'] = User::findByRoleId(1);
         } else {
             echo json_encode(array('success' => false, 'error' => 'You don\'t have permission'));
         }
+        print_r($this->data['list']);
         $this->data['employee'] = '';
         $this->view('employee');
     }
