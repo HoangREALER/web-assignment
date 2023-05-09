@@ -46,5 +46,14 @@ class EmployeeController extends Controller
         $employee->phone = $phone;
         $employee->update();
     }
+
+    function employeeList()
+    {
+        $user = User::findById($this->auth()->id);
+        if ($user->id === 0)
+        {
+            //TODO: return employee list, $this->data['list']
+        }
+    }
     //TODO: Add more functions if you want
 }
