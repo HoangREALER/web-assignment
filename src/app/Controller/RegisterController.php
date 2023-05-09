@@ -22,8 +22,8 @@ class RegisterController extends Controller
         $data['username'] = isset($_POST['username']) ? $_POST['username'] : '';
         $data['email']= isset($_POST['email']) ? $_POST['email'] : '';
         $data['password'] = isset($_POST['password']) ? ($_POST['password']) : '';
-        $data['first_name'] = isset($_POST['first_name']) ? $_POST['first_name'] : '';
-        $data['last_name'] = isset($_POST['last_name']) ? $_POST['last_name'] : '';
+        $data['firstname'] = isset($_POST['firstname']) ? $_POST['firstname'] : '';
+        $data['lastname'] = isset($_POST['lastname']) ? $_POST['lastname'] : '';
         $data['phone'] = isset($_POST['phone']) ? $_POST['phone'] : '';
         $user = new User($data);
         

@@ -10,8 +10,8 @@ class User
     public $username;
     public $password;
     public $email;
-    public $first_name = '';
-    public $last_name = '';
+    public $firstname = '';
+    public $lastname = '';
     public $phone = '';
     public $role_id;
 
@@ -21,8 +21,8 @@ class User
         $this->username = isset($params['username']) ? $params['username'] : '';
         $this->password = isset($params['password']) ? $params['password'] : '';
         $this->email = isset($params['email']) ? $params['email'] : '';
-        $this->first_name = isset($params['first_name']) ? $params['first_name'] : '';
-        $this->last_name = isset($params['last_name']) ? $params['last_name'] : '';
+        $this->firstname = isset($params['firstname']) ? $params['firstname'] : '';
+        $this->lastname = isset($params['lastname']) ? $params['lastname'] : '';
         $this->phone = isset($params['phone']) ? $params['phone'] : '';
         $this->role_id = isset($params['role_id']) ? $params['role_id'] : 0;
     }
@@ -71,16 +71,16 @@ class User
     function save()
     {
         $con = Database::getInstance();
-        $data = [$this->first_name, $this->last_name, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id];
+        $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id];
         $con->queryUpdate("INSERT INTO users (firstname, lastname, email, phone, username, password, role_id) values(?, ?, ?, ?, ?, ?, ?)", $data);
     }
 
-    // function update()
-    // {
-    //     $con = Database::getInstance();
-    //     $data = [$this->password, $this->name, $this->id];
-    //     $con->queryUpdate("update users set password=?, name=? where id=?", $data);
-    // }
+    function update()
+    {
+        $con = Database::getInstance();
+        $data = [$this->firstname, $this->lastname, $this->email, $this->phone, $this->username, md5($this->password), $this->role_id, $this->id];
+        $con->queryUpdate("update users set firstname=?, lastname=?, email=?, phone=?, username=?, password=?, role_id=? where id=?", $data);
+    }
 
     function validate()
     {
@@ -106,7 +106,7 @@ class User
         if (!preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}/', $this->password)) {
             return "Password must have minimum 8 characters, at least one lowercase letter, one uppercase letter, one number. Can have special characters";
         }
-        if (empty($this->first_name) || empty($this->last_name)) {
+        if (empty($this->firstname) || empty($this->lastname)) {
             return "Name empty!";
         }
 
@@ -115,6 +115,6 @@ class User
 
     function __toString()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->firstname . ' ' . $this->lastname;
     }
 }

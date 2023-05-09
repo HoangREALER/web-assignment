@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     function get(){
         // header("location: index.php?page=login");
-        $this->data['home'] = ' ';
+        $this->data['home'] = '';
         $this->view('home');
     }
 }

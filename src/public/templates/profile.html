@@ -30,27 +30,27 @@
         </div>
         <hr class="my-0" />
         <div class="card-body">
-          <form id="formAccountSettings" method="POST" onsubmit="return false">
+          <form id="formAccountSettings" method="POST" action="index.php?page=employee">
             <div class="row">
               <div class="mb-3 col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
-                <input class="form-control" type="text" id="firstName" name="firstName" value="Hoang" autofocus />
+                <input class="form-control" type="text" id="firstName" name="firstname" value="{{ firstname }}" autofocus />
               </div>
               <div class="mb-3 col-md-6">
                 <label for="lastName" class="form-label">Last Name</label>
-                <input class="form-control" type="text" name="lastName" id="lastName" value="Nguyen" />
+                <input class="form-control" type="text" name="lastname" id="lastName" value="{{ lastname }}" />
               </div>
               <div class="mb-3 col-md-6">
                 <label for="email" class="form-label">E-mail</label>
-                <input class="form-control" type="text" id="email" name="email" value="hoang.nguyen@example.com"
+                <input class="form-control" type="text" id="email" name="email" value="{{ email }}"
                   placeholder="hoang.nguyen@example.com" />
               </div>
               <div class="mb-3 col-md-6">
                 <label class="form-label" for="phoneNumber">Phone Number</label>
                 <div class="input-group input-group-merge">
                   <span class="input-group-text">VN (+84)</span>
-                  <input type="text" id="phoneNumber" name="phoneNumber" class="form-control"
-                    placeholder="999 999 999" />
+                  <input type="text" id="phoneNumber" name="phone" class="form-control"
+                    value="{{ phone }}" />
                 </div>
               </div>
               <div class="mb-3 col-md-6">
