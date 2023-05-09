@@ -20,8 +20,14 @@ class TaskController extends Controller
         //      For da boss, get all the tasks that this boss have already assigned, including finished and unfinished ones.
         $user = User::findById($this->auth()->id);
         $this->data['role'] = $user->role_id;
+        
         if ($this->data['role'] === 0) {
             $arr_tasks = Task::findByAssigner($user->id);
+            foreach($arr_tasks as $task)
+            {
+                $task->assigner = User::findById($task->assigner_id);
+                $task->assignee = User::findById($task->assignee_id);
+            }
             $this->data['tasks'] = $arr_tasks;
             $this->view('task-for-boss');
         }

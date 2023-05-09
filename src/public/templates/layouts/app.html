@@ -95,14 +95,14 @@
         <!-- Forms & Tables -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Task &amp; Progress</span></li>
         <!-- Forms -->
-        <li class="menu-item">
+        <li class="menu-item {% if tasks is defined or task_assign is defined %}active{% endif %}">
           <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-detail"></i>
             <div data-i18n="Form Elements">Task</div>
           </a>
           <ul class="menu-sub">
-            <li class="menu-item">
-              <a href="forms-basic-inputs.html" class="menu-link">
+            <li class="menu-item {% if tasks is defined %}active{% endif %}">
+              <a href="index.php?page=task" class="menu-link">
                 <div data-i18n="Basic Inputs">List</div>
               </a>
             </li>
