@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Task & Progress /</span> Employee List</h4>
+    <h4 class="fw-bold py-3 mb-4">Employee List</h4>
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
@@ -25,6 +25,7 @@
                         <td>{{ employee.firstname }} {{ employee.lastname }}</td>
                         <td>{{ employee.email }}</td>
                         <td>(+84) {{ employee.phone }}</td>
+                        <td>(+84) {{ employee.phone }}</td>
                         <td>
                             <div class="d-inline-block">
                                 <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
@@ -44,9 +45,9 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="fa fa-check me-1"></i> Tăng lương</a>
+                                            class="fa fa-check me-1"></i> Aprrove</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="fa fa-ban me-1"></i>
-                                        Layoff</a>
+                                        Reject</a>
                                 </div>
                             </div>
                         </td>

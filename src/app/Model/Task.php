@@ -13,6 +13,8 @@ class Task
     public $task_description = '';
     public $task_performed = '';
     public $task_result = '';
+    public $assigner;
+    public $assignee;
 
     
     function __construct($params = array())

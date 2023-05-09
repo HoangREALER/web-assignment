@@ -59,7 +59,6 @@ class EmployeeController extends Controller
         } else {
             echo json_encode(array('success' => false, 'error' => 'You don\'t have permission'));
         }
-        print_r($this->data['list']);
         $this->data['employee'] = '';
         $this->view('employee');
     }
